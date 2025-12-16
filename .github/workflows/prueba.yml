@@ -1,0 +1,20 @@
+name: Ejemplo Sencillo - Comprobar sintaxis
+
+on:
+  push:
+
+jobs:
+  revisar-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Comprobar que README.md existe
+        run: |
+          if [ -f README.md ]; then
+            echo "README.md existe ✅"
+          else
+            echo "README.md no existe ❌"
+            exit 1
+          fi
